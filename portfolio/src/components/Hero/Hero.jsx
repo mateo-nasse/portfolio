@@ -12,7 +12,7 @@ export const Hero = () => {
                 Hi, I'm Mateo
             </h1>
             <p className={styles.description}>
-                I'm a ___ developer with ___ of experience in ___. Reach out if you'd like to know more!
+                I'm a Front-End Developer who dabbles in the Back. Reach out if you'd like to know more!
             </p>
             <a href="mailto:mateonasse@gmail.com" className={styles.contactBtn}>Contact Me</a>
         </div>

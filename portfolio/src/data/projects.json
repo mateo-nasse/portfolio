@@ -1,26 +1,12 @@
 [
   {
-    "title": "Project A",
-    "imageSrc": "projects/project.png",
-    "description": "This is a project made to learn the latest languages by building an app.",
-    "skills": ["React", "Express", "Node"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
-  },
-  {
-    "title": "Project B",
-    "imageSrc": "projects/project.png",
-    "description": "This is a project made to learn the latest languages by building an app.",
-    "skills": ["React", "Express", "Node", "Sass"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
-  },
-  {
-    "title": "Project C",
-    "imageSrc": "projects/project.png",
-    "description": "This is a project made to learn the latest languages by building an app.",
-    "skills": ["React", "Express", "Node"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "title": "Wordle Clone",
+    "imageSrc": "projects/wordleImage.png",
+    "description": "Recreated the Wordle game from scratch with custom logic, responsive design, and real-time feedback.",
+    "skills": ["React", "JS", "Node", "JSON"],
+    "demo": null,
+    "source": "https://github.com/mateo-nasse/wordle-clone",
+    "demoAv": false,
+    "sourceAv": true
   }
 ]

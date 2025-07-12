@@ -1,10 +1,10 @@
 [
   {
-    "role": "Software Engineer",
-    "organisation": "Google",
-    "startDate": "Sept, 2022",
-    "endDate": "Present",
-    "experiences": ["Worked on Google Maps", "Reduced load times by 50%"],
-    "imageSrc": "history/google.png"
+    "role": "Web Developer",
+    "organisation": "TU Delft Speech Lab",
+    "startDate": "May, 2024",
+    "endDate": "June, 2024",
+    "experiences": ["Built Svelte Web App to visualize metadata", "Designed an interactive data table with filtering and sorting capabilities", "Implemented automated chart suggestions based on data structure and types", "Developed a user-friendly interface for selecting and customizing data visualizations"],
+    "imageSrc": "history/tudelftpng.png"
   }
 ]
