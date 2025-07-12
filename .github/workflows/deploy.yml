@@ -22,11 +22,11 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        uses: npm install
+        run: npm install
 
       # Build project
       - name: Built the project
-        uses: npm run build
+        run: npm run build
 
       # Deploy to Github Pages
       - name: Deploy to Github Pages
