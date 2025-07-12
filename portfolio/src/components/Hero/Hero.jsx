@@ -19,7 +19,7 @@ export const Hero = () => {
         <div className={styles.imageContainer}>
             <div
                 className={`${styles.imageInner} ${isFlipped ? styles.flipped : ''}`}
-                onMouseEnter={() => {setIsFlipped(true); console.log("entered")}}
+                onMouseEnter={() => {setIsFlipped(true)}}
                 onMouseLeave={() => setIsFlipped(false)}
             >
                 <div className={`${styles.frontImage} ${styles.imageCard}`}>
