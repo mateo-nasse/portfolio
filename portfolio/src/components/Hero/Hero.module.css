@@ -92,12 +92,12 @@
 }
 
 .frontImage {
-    background-image: url("../../../assets/hero/frontImage.png");
+    background-image: url("../../../public/assets/hero/frontImage.png");
     transform: rotateY(0deg);
 }
 
 .backImage {
-    background-image: url("../../../assets/hero/backImage.png");
+    background-image: url("../../../public/assets/hero/backImage.png");
     transform: rotateY(180deg);
 }
 
