@@ -1,3 +1,3 @@
 export const getImageUrl = (path) => {
-    return `/assets/${path}`;
+    return `/portfolio/assets/${path}`;
 }
