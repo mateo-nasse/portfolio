@@ -65,6 +65,20 @@
     font-size: 25px;
 }
 
+.topBlur {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    min-width: 350px;
+    min-height: 350px;
+    top: -128px;
+    left: -30vw;
+    border-radius: 500px;
+    background: rgba(15, 52, 116, 0.2);
+    filter: blur(100px);
+    z-index: 0;
+}
+
 @media screen and (max-width: 830px) {
     .container {
         background-color: transparent;

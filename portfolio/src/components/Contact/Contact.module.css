@@ -44,6 +44,11 @@
     font-size: 30px;
     font-weight: 400;
     letter-spacing: 1.5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.link a:hover {
+    transform: scale(1.1) translate(18px, -5px);
 }
 
 @media screen and (max-width: 830px) {

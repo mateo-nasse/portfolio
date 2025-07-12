@@ -29,6 +29,7 @@
         rgba(255, 255, 255, 1) 40%, 
         rgba(255, 255, 255, 0.8) 140%
     );
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
@@ -50,17 +51,6 @@
     box-shadow: 0 0 8px 0 rgb(171, 193, 233);
 }
 
-.heroImg {
-    width: 50%;
-    z-index: 1;
-
-    /* Animation: Up and down floating */
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-}
-
 @keyframes floating {
     0% {
         transform: translateY(0px);
@@ -72,6 +62,52 @@
         transform: translateY(0px);
     }
 }
+
+.imageContainer {
+    width: 650px;
+    height: 435px;
+}
+
+.imageInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    /* Animation: Up and down floating */
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.frontImage, .backImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 1s;
+}
+
+.frontImage {
+    background-image: url("../../../assets/hero/frontImage.png");
+    transform: rotateY(0deg);
+}
+
+.backImage {
+    background-image: url("../../../assets/hero/backImage.png");
+    transform: rotateY(180deg);
+}
+
+.flipped .frontImage {
+    transform: rotateY(180deg);
+}
+
+.flipped .backImage {
+    transform: rotateY(0deg);
+}
+
 
 .topBlur {
     position: absolute;
@@ -108,5 +144,10 @@
 
     .content {
         align-items: center;
+        justify-content: center;
+    }
+
+    .imageContainer {
+        width: 85%;
     }
 }

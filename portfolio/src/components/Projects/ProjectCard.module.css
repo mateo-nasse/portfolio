@@ -47,7 +47,7 @@
   width: 100%;
   margin-top: 26px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .link {
@@ -58,4 +58,10 @@
   border-radius: 100px;
   background: var(--color-dark);
   padding: 8px 22px;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+  transform: scale(1.1);
+  background: var(--color-bg);
 }

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getImageUrl } from '../../utils'
 import styles from "./Hero.module.css"
 
 export const Hero = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
   return (
     <section className={styles.container}>
         <div className={styles.content}>
@@ -14,7 +16,18 @@ export const Hero = () => {
             </p>
             <a href="mailto:mateonasse@gmail.com" className={styles.contactBtn}>Contact Me</a>
         </div>
-        <img src={getImageUrl("hero/heroImage.png")} alt="hero-image" className={styles.heroImg}/>
+        <div className={styles.imageContainer}>
+            <div
+                className={`${styles.imageInner} ${isFlipped ? styles.flipped : ''}`}
+                onMouseEnter={() => {setIsFlipped(true); console.log("entered")}}
+                onMouseLeave={() => setIsFlipped(false)}
+            >
+                <div className={`${styles.frontImage} ${styles.imageCard}`}>
+                </div>
+                <div className={`${styles.backImage} ${styles.imageCard}`}>
+                </div>
+            </div>
+        </div>
         <div className={styles.topBlur} />
         <div className={styles.bottomBlur} />
     </section>
