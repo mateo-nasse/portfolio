@@ -13,15 +13,38 @@
   font-weight: 700;
   letter-spacing: 1.75px;
   text-transform: uppercase;
+  margin-bottom: 37px;
 }
 
-.projects {
-  margin-top: 37px;
+/* Featured landscape card — full width */
+.featuredRow {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 15px;
-  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Equal 3-column grid for non-featured cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
