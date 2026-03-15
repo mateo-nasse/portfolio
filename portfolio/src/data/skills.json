@@ -1,22 +1,32 @@
 [
   {
-    "title": "HTML",
-    "imageSrc": "skills/html.png"
+    "category": "Languages",
+    "icon": "{ }",
+    "skills": ["Python", "JavaScript", "TypeScript", "Java", "C++", "Scala", "SQL"]
   },
   {
-    "title": "CSS",
-    "imageSrc": "skills/css.png"
+    "category": "Frontend",
+    "icon": "◱",
+    "skills": ["React", "Svelte", "HTML", "CSS"]
   },
   {
-    "title": "React",
-    "imageSrc": "skills/react.png"
+    "category": "Backend & Data",
+    "icon": "⬡",
+    "skills": ["Node.js", "Flask", "Spring", "PostgreSQL", "MySQL", "MongoDB", "Spark"]
   },
   {
-    "title": "Node",
-    "imageSrc": "skills/node.png"
+    "category": "Scraping & Automation",
+    "icon": "⟳",
+    "skills": ["Playwright", "Puppeteer", "Selenium"]
   },
   {
-    "title": "Figma",
-    "imageSrc": "skills/figma.png"
+    "category": "Infrastructure & Tools",
+    "icon": "⬗",
+    "skills": ["Git", "Docker", "CI/CD", "Vercel", "Supabase", "Power BI"]
+  },
+  {
+    "category": "Data Science",
+    "icon": "∿",
+    "skills": ["NumPy", "Pandas", "Machine Learning"]
   }
 ]

@@ -15,21 +15,21 @@ export const About = () => {
                     <img src={getImageUrl("about/cursorIcon.png")} alt="cursor-image" />
                     <div className={styles.cardText}>
                         <h3>Front-End</h3>
-                        <p>Built responsive, intuitive interfaces with React and Svelte, focused on smooth interactions and clean design with tools such as Tailwind.</p>
+                        <p>Building responsive, intuitive interfaces with React and Svelte, focused on clean design and smooth user experience.</p>
                     </div>
                 </li>
                 <li className={styles.card}>
                     <img src={getImageUrl("about/serverIcon.png")} alt="server-image" />
                     <div className={styles.cardText}>
-                        <h3>Back-End</h3>
-                        <p>Developed scalable backend systems in Java with Spring, including real-time features and modular architecture.</p>
+                        <h3>Back-End & Data</h3>
+                        <p>Building scalable data pipelines, web scrapers, and backend systems — with experience across Python, Java, SQL, and cloud-based deployment.</p>
                     </div>
                 </li>
                 <li className={styles.card}>
                     <img src={getImageUrl("about/uiIcon.png")} alt="cursor-image" />
                     <div className={styles.cardText}>
-                        <h3>UI</h3>
-                        <p>Designed clear, user-friendly interfaces with attention to layout, usability, and visual consistency.</p>
+                        <h3>Problem Solver</h3>
+                        <p>CS degree from TU Delft, with a minor in Creative Facilitation. I approach problems with both technical rigour and an eye for usability.</p>
                     </div>
                 </li>
             </ul>
