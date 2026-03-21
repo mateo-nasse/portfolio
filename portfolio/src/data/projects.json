@@ -4,7 +4,7 @@
     "imageSrc": "projects/jobsImage.png",
     "description": "Full-stack platform that scrapes job postings from company career pages using configurable templates, stores data in PostgreSQL, and serves it through a mobile-first React web app with filtering by experience level and role.",
     "skills": ["Python", "React", "Playwright", "Supabase", "PostgreSQL", "Vercel"],
-    "demo": "https://jomo-oc558h5ge-mateo-nasses-projects.vercel.app/",
+    "demo": "https://jomo-theta.vercel.app/",
     "source": null,
     "demoAv": true,
     "sourceAv": false,
