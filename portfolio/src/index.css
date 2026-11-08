@@ -1,10 +1,182 @@
-* {
+@font-face {
+  font-family: "Departure Mono";
+  src: url("./assets/fonts/DepartureMono-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+/*
+ * Design rules
+ * - Everything is built on --px, one "pixel" (4 CSS px). Spacing, borders and sprites use multiples of it.
+ * - Departure Mono is drawn on an 11px grid, so font sizes are kept to multiples of 11.
+ *   22px body = 2px font pixels, 44px headings = 4px font pixels (same as --px).
+ * - Warm NES-ish palette. Sprites reference these variables, so they're the single source of colour.
+ */
+:root {
+  --px: 4px;
+
+  --c-ink: #1a1210;      /* page background */
+  --c-ink-2: #2a1d18;    /* panels */
+  --c-ink-3: #4a3226;    /* borders, quiet details */
+  --c-paper: #f6e7c9;    /* main text */
+  --c-paper-dim: #c9b69a;/* secondary text */
+  --c-red: #d9442c;
+  --c-red-dark: #6e2a1e;
+  --c-orange: #f08c3a;
+  --c-yellow: #f8cc5a;
+  --c-teal: #3c9c94;
+  --c-firefly: #d6e06a;
+  --c-firefly-dim: #4f5428;
+  --c-plum: #6b3550;
+  --c-plum-dark: #432235;
+  --c-brown: #8a5530;
+  --c-brown-dark: #5a3420;
+  --c-glow: #3f251a;    /* faint firelight on the background */
+
+  --font: "Departure Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --fs-body: 22px;
+  --lh-body: 33px;
+  --fs-h2: 44px;
+  --fs-h1: 66px;
+
+  --content: 880px;
+  --gutter: calc(var(--px) * 8);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  font-family: "Outfit", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 html {
+  background: var(--c-ink);
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-paper);
+  background: var(--c-ink);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
+}
+
+/* While a popup is open, the page behind it shouldn't scroll. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Side scenery reaches into the margins; never let it cause sideways scrolling. */
+main {
+  overflow-x: clip;
+}
+
+a {
+  color: var(--c-yellow);
+  text-decoration: none;
+  background-image: linear-gradient(var(--c-yellow), var(--c-yellow));
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+}
+
+a:hover {
+  color: var(--c-ink);
+  background-size: 100% 100%;
+}
+
+:focus-visible {
+  outline: var(--px) solid var(--c-teal);
+  outline-offset: var(--px);
+}
+
+::selection {
+  background: var(--c-orange);
+  color: var(--c-ink);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: calc(var(--px) * 2);
+  left: calc(var(--px) * 2);
+  z-index: 20;
+  padding: var(--px) calc(var(--px) * 2);
+  background: var(--c-yellow);
+  color: var(--c-ink);
+}
+
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* NES-style box: a --px border with notched corners. */
+.pixel-box {
+  --box-bg: var(--c-ink-2);
+  --box-border: var(--c-ink-3);
+  background: var(--box-bg);
+  margin: var(--px);
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--box-border),
+    0 var(--px) 0 0 var(--box-border),
+    calc(var(--px) * -1) 0 0 0 var(--box-border),
+    var(--px) 0 0 0 var(--box-border);
+}
+
+/* Frame-by-frame sprite animation (see PixelAnim). The strip slides one whole frame per step. */
+@keyframes pixel-frames {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--shift)); }
+}
+
+/* Anything inside an off-screen area stops animating, to keep things calm and save battery. */
+[data-offscreen='true'] *,
+[data-offscreen='true'] *::before,
+[data-offscreen='true'] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --fs-h1: 44px;
+    --fs-h2: 33px;
+    --gutter: calc(var(--px) * 4);
+  }
+}
+
+/* No animation: when the OS asks for reduced motion, or when calm mode is switched on. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html[data-calm] { scroll-behavior: auto; }
+html[data-calm] *,
+html[data-calm] *::before,
+html[data-calm] *::after {
+  animation: none !important;
+  transition: none !important;
 }

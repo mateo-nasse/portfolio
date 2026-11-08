@@ -1,0 +1,40 @@
+.firefly {
+  position: absolute;
+  pointer-events: none;
+  animation: wander var(--dur) var(--delay) infinite;
+}
+
+/* Each leg is 6 pixels, so steps(6) moves exactly one pixel per step. */
+@keyframes wander {
+  0% {
+    transform: translate(0, 0);
+    animation-timing-function: steps(6);
+  }
+  25% {
+    transform: translate(calc(var(--px) * var(--x1)), calc(var(--px) * var(--y1)));
+    animation-timing-function: steps(6);
+  }
+  50% {
+    transform: translate(calc(var(--px) * var(--x2)), calc(var(--px) * var(--y2)));
+    animation-timing-function: steps(6);
+  }
+  75% {
+    transform: translate(calc(var(--px) * var(--x3)), calc(var(--px) * var(--y3)));
+    animation-timing-function: steps(6);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Glows, dims, goes dark for a moment, comes back. */
+.light {
+  animation: pulse 3.2s steps(1) var(--delay) infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  45% { opacity: 0.55; }
+  65% { opacity: 0; }
+  80% { opacity: 0.55; }
+}

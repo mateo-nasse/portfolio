@@ -1,0 +1,115 @@
+.section {
+  position: relative;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: calc(var(--px) * 24) var(--gutter) calc(var(--px) * 8);
+  scroll-margin-top: calc(var(--px) * 12);
+}
+
+.divider {
+  overflow: hidden;
+  margin-bottom: calc(var(--px) * 12);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: calc(var(--px) * 4);
+  margin-bottom: calc(var(--px) * 8);
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--px) * 4);
+  font-size: var(--fs-h2);
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+.index {
+  position: relative;
+  color: var(--c-orange);
+}
+
+.motif {
+  flex-shrink: 0;
+}
+
+/* Sparks flying out of the section number on unlock. Runs once, after the title has wiped in. */
+.burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.burst span {
+  position: absolute;
+  width: var(--px);
+  height: var(--px);
+  background: var(--c-yellow);
+  visibility: hidden;
+  animation: burst 360ms steps(3) 520ms;
+}
+
+.burst span:nth-child(even) {
+  background: var(--c-orange);
+}
+
+@keyframes burst {
+  0% {
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+  99% {
+    visibility: visible;
+    transform: translate(calc(var(--px) * var(--dx)), calc(var(--px) * var(--dy)));
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+/* Locked: hidden until scrolled to. Only applies when JS is running (see index.html). */
+:global(.js) .section[data-unlocked='false'] .titleRow {
+  clip-path: inset(0 100% 0 0);
+}
+
+:global(.js) .section[data-unlocked='false'] .body {
+  clip-path: inset(0 0 100% 0);
+}
+
+/* Unlocking: the title wipes in left to right, then the body top to bottom, in hard steps.
+   'backwards' so the clip is gone afterwards and doesn't cut off box borders. */
+.section[data-unlocked='true'] .titleRow {
+  animation: wipe-right 480ms steps(8) backwards;
+}
+
+.section[data-unlocked='true'] .body {
+  animation: wipe-down 640ms steps(10) 360ms backwards;
+}
+
+@keyframes wipe-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes wipe-down {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* Without animation there's nothing to wipe in, so locked sections just show. */
+@media (prefers-reduced-motion: reduce) {
+  :global(.js) .section[data-unlocked='false'] .titleRow,
+  :global(.js) .section[data-unlocked='false'] .body {
+    clip-path: none;
+  }
+}
+
+:global(html[data-calm].js) .section[data-unlocked='false'] .titleRow,
+:global(html[data-calm].js) .section[data-unlocked='false'] .body {
+  clip-path: none;
+}

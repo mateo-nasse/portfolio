@@ -1,0 +1,40 @@
+.story {
+  display: grid;
+  gap: calc(var(--px) * 4);
+  max-width: 60ch;
+}
+
+.subtitle {
+  margin-top: calc(var(--px) * 12);
+  margin-bottom: calc(var(--px) * 6);
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-yellow);
+}
+
+.items {
+  list-style: none;
+  display: grid;
+  gap: calc(var(--px) * 6);
+  max-width: 60ch;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: calc(var(--px) * 3) 1fr;
+  gap: calc(var(--px) * 4);
+}
+
+.bullet {
+  margin-top: calc(var(--px) * 3);
+}
+
+.itemTitle {
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-orange);
+}
+
+.item p {
+  color: var(--c-paper-dim);
+}

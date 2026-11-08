@@ -1,0 +1,120 @@
+.dialog {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  max-width: min(calc(var(--px) * 200), calc(100vw - var(--px) * 8));
+  max-height: calc(100svh - var(--px) * 8);
+  background: transparent;
+  color: inherit;
+  overflow: visible;
+}
+
+/* The page behind is darkened with a dither (a checker of 2x2 pixel cells) rather than a blur.
+   Literal colours here: ::backdrop doesn't reliably see the page's CSS variables. */
+.dialog::backdrop {
+  background-color: rgba(26, 18, 16, 0.55);
+  background-image: repeating-conic-gradient(#1a1210 0 25%, transparent 0 50%);
+  background-size: 8px 8px;
+}
+
+.window {
+  --box-bg: var(--c-ink-2);
+  --box-border: var(--c-orange);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100svh - var(--px) * 10);
+}
+
+/* Opens in hard steps from the middle outwards. */
+.dialog[open] .window {
+  animation: open 280ms steps(5) backwards;
+}
+
+@keyframes open {
+  from { clip-path: inset(45% 45% 45% 45%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--px) * 4);
+  padding: calc(var(--px) * 2) calc(var(--px) * 2) calc(var(--px) * 2) calc(var(--px) * 6);
+  background: var(--c-ink-3);
+}
+
+.title {
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-yellow);
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: calc(var(--px) * 11);
+  height: calc(var(--px) * 11);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.close:hover {
+  background: var(--c-red);
+}
+
+.content {
+  overflow-y: auto;
+  padding: calc(var(--px) * 6);
+}
+
+.figure {
+  margin-bottom: calc(var(--px) * 6);
+}
+
+/* Screenshots stay sharp (no pixelation); the pixel art is the frame around them. */
+.frame {
+  --box-bg: var(--c-ink);
+  --box-border: var(--c-ink-3);
+  padding: var(--px);
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin-top: calc(var(--px) * 3);
+  color: var(--c-paper-dim);
+}
+
+.meta {
+  color: var(--c-paper-dim);
+  margin-bottom: calc(var(--px) * 6);
+}
+
+.section {
+  max-width: 62ch;
+  margin-bottom: calc(var(--px) * 6);
+}
+
+.sectionTitle {
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-orange);
+}
+
+.link {
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: calc(var(--px) * 4);
+  }
+}

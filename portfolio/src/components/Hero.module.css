@@ -1,0 +1,126 @@
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--px) * 16);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  /* Room for the hills (20) and the fade under them (16). */
+  padding-bottom: calc(var(--px) * 36);
+}
+
+.sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  animation: twinkle 2.4s steps(1) infinite;
+}
+
+@keyframes twinkle {
+  0%, 70% { opacity: 1; }
+  71%, 85% { opacity: 0.35; }
+  86%, 100% { opacity: 1; }
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.diamond {
+  margin-bottom: calc(var(--px) * 6);
+}
+
+.title {
+  font-size: var(--fs-h1);
+  line-height: 1.5;
+  font-weight: normal;
+  color: var(--c-paper);
+  margin-bottom: calc(var(--px) * 6);
+}
+
+.line {
+  max-width: 42ch;
+  color: var(--c-paper-dim);
+  margin-bottom: calc(var(--px) * 4);
+}
+
+.line:first-of-type {
+  color: var(--c-paper);
+}
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--px) * 3);
+  margin-top: calc(var(--px) * 8);
+  color: var(--c-orange);
+  background: none;
+}
+
+.hint:hover {
+  color: var(--c-yellow);
+  background: none;
+}
+
+.arrow {
+  animation: bob 1.6s steps(1) infinite;
+}
+
+@keyframes bob {
+  0%, 49% { transform: translateY(0); }
+  50%, 100% { transform: translateY(var(--px)); }
+}
+
+/* Every so often a star streaks across: 30 steps of 4 across and 2 down (in --px), matching
+   the 2:1 slope of the sprite. Then it waits out the rest of the cycle. */
+.shootingStar {
+  position: absolute;
+  top: calc(var(--px) * 8);
+  left: 18%;
+  visibility: hidden;
+  animation: shoot 12s 4s infinite;
+}
+
+@keyframes shoot {
+  0% {
+    visibility: visible;
+    transform: translate(0, 0);
+    animation-timing-function: steps(30);
+  }
+  8% {
+    visibility: visible;
+    transform: translate(calc(var(--px) * 120), calc(var(--px) * 60));
+  }
+  8.01%,
+  100% {
+    visibility: hidden;
+    transform: translate(calc(var(--px) * 120), calc(var(--px) * 60));
+  }
+}
+
+/* Embers start a little below the hilltops so they seem to come off the hills. */
+.embers {
+  bottom: calc(var(--px) * 22);
+}
+
+.horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .star:nth-child(n + 4) {
+    display: none;
+  }
+}

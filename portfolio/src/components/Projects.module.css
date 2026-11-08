@@ -1,0 +1,61 @@
+.list {
+  list-style: none;
+  display: grid;
+  gap: calc(var(--px) * 10);
+}
+
+.project {
+  padding: calc(var(--px) * 8);
+}
+
+.name {
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-yellow);
+}
+
+.meta {
+  color: var(--c-paper-dim);
+  margin-bottom: calc(var(--px) * 4);
+}
+
+.text {
+  max-width: 60ch;
+  margin-bottom: calc(var(--px) * 4);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--px) * 3) calc(var(--px) * 8);
+}
+
+/* A small pixel button: notched orange border, fills in on hover. */
+.more {
+  --box-bg: transparent;
+  --box-border: var(--c-orange);
+  font: inherit;
+  color: var(--c-orange);
+  background: var(--box-bg);
+  border: 0;
+  padding: var(--px) calc(var(--px) * 4);
+  margin: var(--px);
+  cursor: pointer;
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--box-border),
+    0 var(--px) 0 0 var(--box-border),
+    calc(var(--px) * -1) 0 0 0 var(--box-border),
+    var(--px) 0 0 0 var(--box-border);
+}
+
+.more:hover {
+  background: var(--c-orange);
+  color: var(--c-ink);
+}
+
+@media (max-width: 600px) {
+  .project {
+    padding: calc(var(--px) * 4);
+  }
+}
