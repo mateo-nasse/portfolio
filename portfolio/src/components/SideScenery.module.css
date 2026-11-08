@@ -1,0 +1,41 @@
+/* The margins either side of the content column. Hidden until there's real room for them. */
+.side {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc((100vw - 100%) / 2);
+  pointer-events: none;
+}
+
+.side[data-side='left'] {
+  right: 100%;
+}
+
+.side[data-side='right'] {
+  left: 100%;
+}
+
+@media (min-width: 1200px) {
+  .side {
+    display: block;
+  }
+}
+
+.star {
+  position: absolute;
+  animation: twinkle 3s steps(1) infinite;
+}
+
+@keyframes twinkle {
+  0%, 70% { opacity: 1; }
+  71%, 85% { opacity: 0.35; }
+  86%, 100% { opacity: 1; }
+}
+
+/* Constellations sit near the section title, centred in the margin. */
+.constellation {
+  top: calc(var(--px) * 36);
+  left: 50%;
+  margin-left: calc(var(--px) * -16);
+}

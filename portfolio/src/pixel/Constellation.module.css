@@ -1,0 +1,35 @@
+.constellation {
+  position: absolute;
+  display: block;
+  overflow: visible;
+}
+
+.dot {
+  fill: var(--c-plum);
+  visibility: hidden;
+}
+
+.star {
+  fill: var(--c-paper-dim);
+}
+
+/* Drawing. Once drawn, dots are visible and stars are yellow by default; the animations only
+   hold the "before" look until each one's moment comes (backwards fill during the delay).
+   This way the end state never depends on an animation's fill sticking. */
+.constellation[data-drawn='true'] .dot {
+  visibility: visible;
+  animation: dot-wait 1ms steps(1) backwards;
+}
+
+.constellation[data-drawn='true'] .star {
+  fill: var(--c-yellow);
+  animation: star-wait 1ms steps(1) var(--done) backwards;
+}
+
+@keyframes dot-wait {
+  from, to { visibility: hidden; }
+}
+
+@keyframes star-wait {
+  from, to { fill: var(--c-paper-dim); }
+}

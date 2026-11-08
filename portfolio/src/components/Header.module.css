@@ -1,0 +1,129 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--px) * 8);
+  height: calc(var(--px) * 16);
+  padding: 0 var(--gutter);
+  background: var(--c-ink);
+  /* Dithered bottom edge. */
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--c-ink-3) 0 var(--px),
+    transparent var(--px) calc(var(--px) * 2)
+  );
+  background-size: 100% var(--px);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+}
+
+.mark {
+  color: var(--c-orange);
+  background: none;
+}
+
+.mark:hover {
+  color: var(--c-yellow);
+  background: none;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.nav ul {
+  display: flex;
+  gap: calc(var(--px) * 6);
+  list-style: none;
+}
+
+.nav a {
+  color: var(--c-paper-dim);
+  background-image: none;
+}
+
+.nav a:hover {
+  color: var(--c-paper);
+  background: none;
+}
+
+.cv {
+  color: var(--c-orange) !important;
+}
+
+/* Calm switch: a tiny pixel toggle. The knob sits left when off, right (and yellow) when on. */
+.calm {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--px) * 2);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--c-paper-dim);
+  cursor: pointer;
+}
+
+.calm:hover {
+  color: var(--c-paper);
+}
+
+.switch {
+  position: relative;
+  width: calc(var(--px) * 7);
+  height: calc(var(--px) * 4);
+  background: var(--c-ink-3);
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: var(--px);
+  left: var(--px);
+  width: calc(var(--px) * 2);
+  height: calc(var(--px) * 2);
+  background: var(--c-paper-dim);
+}
+
+.switch[data-on='true']::after {
+  left: calc(var(--px) * 4);
+  background: var(--c-yellow);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+}
+
+.cells {
+  display: flex;
+  gap: var(--px);
+}
+
+.cell {
+  width: calc(var(--px) * 3);
+  height: calc(var(--px) * 3);
+  background: var(--c-ink-3);
+}
+
+.cell[data-filled='true'] {
+  background: var(--c-yellow);
+  animation: pop 240ms steps(3);
+}
+
+@keyframes pop {
+  0% { background: var(--c-paper); }
+  100% { background: var(--c-yellow); }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    display: none;
+  }
+
+  .calm {
+    margin-left: auto;
+  }
+}

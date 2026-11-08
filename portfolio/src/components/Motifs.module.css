@@ -1,0 +1,37 @@
+.diagram {
+  position: relative;
+}
+
+/* Travels along the connector: right from (8,2) to (21,2), then down to (21,7). Coordinates in --px. */
+.packet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--px);
+  height: var(--px);
+  background: var(--c-paper);
+  visibility: hidden;
+  animation: packet 3.6s infinite 1s;
+}
+
+@keyframes packet {
+  0% {
+    visibility: visible;
+    transform: translate(calc(var(--px) * 8), calc(var(--px) * 2));
+    animation-timing-function: steps(13);
+  }
+  40% {
+    visibility: visible;
+    transform: translate(calc(var(--px) * 21), calc(var(--px) * 2));
+    animation-timing-function: steps(5);
+  }
+  60% {
+    visibility: visible;
+    transform: translate(calc(var(--px) * 21), calc(var(--px) * 7));
+  }
+  61%,
+  100% {
+    visibility: hidden;
+    transform: translate(calc(var(--px) * 21), calc(var(--px) * 7));
+  }
+}

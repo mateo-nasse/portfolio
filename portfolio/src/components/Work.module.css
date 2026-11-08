@@ -1,0 +1,62 @@
+.job {
+  margin-bottom: calc(var(--px) * 12);
+}
+
+.featured {
+  padding: calc(var(--px) * 8);
+}
+
+.head {
+  margin-bottom: calc(var(--px) * 4);
+}
+
+.company {
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-yellow);
+}
+
+.role {
+  color: var(--c-paper);
+}
+
+.meta {
+  color: var(--c-paper-dim);
+}
+
+.summary {
+  max-width: 60ch;
+}
+
+.items {
+  list-style: none;
+  margin-top: calc(var(--px) * 8);
+  display: grid;
+  gap: calc(var(--px) * 6);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: calc(var(--px) * 3) 1fr;
+  gap: calc(var(--px) * 4);
+}
+
+.bullet {
+  margin-top: calc(var(--px) * 3);
+}
+
+.itemTitle {
+  font-size: var(--fs-body);
+  font-weight: normal;
+  color: var(--c-orange);
+}
+
+.item p {
+  color: var(--c-paper-dim);
+}
+
+@media (max-width: 600px) {
+  .featured {
+    padding: calc(var(--px) * 4);
+  }
+}

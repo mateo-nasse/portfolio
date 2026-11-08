@@ -1,0 +1,114 @@
+.text {
+  max-width: 50ch;
+  margin-bottom: calc(var(--px) * 8);
+}
+
+.links {
+  list-style: none;
+  display: grid;
+  gap: calc(var(--px) * 2);
+}
+
+.links li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 calc(var(--px) * 4);
+}
+
+.label {
+  display: inline-block;
+  min-width: 9ch;
+  color: var(--c-paper-dim);
+}
+
+.scene {
+  margin-top: calc(var(--px) * 16);
+}
+
+/*
+ * The camp scene. Everything is centred on the page middle in whole --px:
+ * The near hills are centred by RollingHills, the fire is 23 wide (centre col 11), the glow 61 wide (centre col 30).
+ * Layering: glow behind the hills, fire and embers in front.
+ */
+.camp {
+  position: relative;
+  height: calc(var(--px) * 52);
+  overflow: hidden;
+}
+
+.glow,
+.hills,
+.fireButton,
+.embers {
+  position: absolute;
+  left: 50%;
+}
+
+.glow {
+  bottom: calc(var(--px) * -4);
+}
+
+.hills {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.fireButton {
+  bottom: calc(var(--px) * 3);
+  margin-left: calc(var(--px) * -11);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.embers {
+  margin-left: calc(var(--px) * -6);
+  pointer-events: none;
+}
+
+/* Sparks that pop out of the fire when a log goes on. Distances are multiples of 3, so each of
+   the 3 steps lands on a whole pixel. */
+.crackle {
+  position: absolute;
+  left: calc(var(--px) * 11);
+}
+
+.crackle span {
+  position: absolute;
+  width: var(--px);
+  height: var(--px);
+  background: var(--c-yellow);
+  visibility: hidden;
+  animation: crackle 420ms steps(3);
+}
+
+.crackle span:nth-child(odd) {
+  background: var(--c-orange);
+}
+
+@keyframes crackle {
+  0% {
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+  99% {
+    visibility: visible;
+    transform: translate(calc(var(--px) * var(--dx)), calc(var(--px) * var(--dy)));
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+.fade {
+  overflow: hidden;
+}
+
+.footer {
+  padding: calc(var(--px) * 8) var(--gutter);
+  text-align: center;
+  color: var(--c-paper-dim);
+  background: var(--c-ink);
+}

@@ -2,9 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <meta name="description" content="Mateo Nasse, a full-stack software engineer in Amsterdam. The things I've built, explained." />
+    <meta name="theme-color" content="#1a1210" />
+    <!-- The real address, so search engines treat the old GitHub Pages copy as a duplicate. -->
+    <link rel="canonical" href="https://mateonasse.com/" />
+    <title>Mateo Nasse</title>
+    <!-- Lets CSS hide not-yet-unlocked sections only when JS is running, so the content is never lost. -->
+    <script>
+      document.documentElement.classList.add('js')
+      // Calm mode (no animation) is remembered between visits; apply it before anything draws.
+      try { if (localStorage.getItem('calm') === '1') document.documentElement.dataset.calm = '' } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
